@@ -67,8 +67,6 @@ Adapun tujuan dari pembuatan website ini adalah:
 
 **Mata Kuliah:** Pemrograman Web
 
-**Tahun:** 2026
-
 ---
 
 ## Lisensi

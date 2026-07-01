@@ -1,58 +1,401 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Travel</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        .booking-wrapper {
+            max-width: 800px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+        }
 
-<meta charset="UTF-8">
+        .booking-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.10);
+        }
 
-<title>Booking</title>
+        .booking-card h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        .booking-card .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+        .form-group {
+            margin-bottom: 18px;
+        }
 
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            font-size: 14px;
+            color: #0f172a;
+            margin-bottom: 5px;
+        }
+
+        .form-group label .required {
+            color: #ef4444;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            transition: 0.3s;
+            background: #f8fafc;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #0f172a;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(15,23,42,0.08);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        /* Harga & Ringkasan */
+        .price-summary {
+            background: #f1f5f9;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 20px 0 24px;
+        }
+
+        .price-summary .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .price-summary .row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 18px;
+            color: #0f172a;
+            padding-top: 12px;
+            margin-top: 4px;
+            border-top: 2px solid #0f172a;
+        }
+
+        .price-summary .row .label {
+            color: #475569;
+        }
+
+        .price-summary .row .value {
+            font-weight: 600;
+        }
+
+        .dest-price {
+            font-weight: 500;
+            color: #0f172a;
+        }
+
+        .dest-info {
+            margin-top: 8px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #334155;
+            font-size: 14px;
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            margin: 24px 0 20px;
+        }
+
+        .payment-methods h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            background: #fff;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .payment-option:hover {
+            border-color: #94a3b8;
+        }
+
+        .payment-option.selected {
+            border-color: #0f172a;
+            background: #f1f5f9;
+        }
+
+        .payment-option input[type="radio"] {
+            accent-color: #0f172a;
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .payment-option .icon {
+            font-size: 22px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: #0f172a;
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-submit:hover {
+            background: #1e293b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(15,23,42,0.25);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: #0f172a;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            margin-top: 16px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-back:hover {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+        }
+
+        .footer-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-card {
+                padding: 24px 18px;
+            }
+
+            .booking-card h1 {
+                font-size: 26px;
+            }
+
+            .payment-options {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .price-summary {
+                padding: 16px 18px;
+            }
+
+            .footer-actions {
+                flex-direction: column;
+            }
+
+            .btn-back {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
+    <!-- Header -->
+    <header>
+        <div class="logo">TravelGo</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="transaction.html">Transaksi</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<h2>Booking Travel</h2>
+    <div class="booking-wrapper">
+        <div class="booking-card">
+            <h1>✈️ Booking Travel</h1>
+            <p class="subtitle">Isi data diri dan pilih paket liburan impianmu</p>
 
-<form id="bookingForm">
+            <form id="bookingForm" novalidate>
+                <!-- Data Diri -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nama Lengkap <span class="required">*</span></label>
+                        <input type="text" id="nama" placeholder="Masukkan nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email <span class="required">*</span></label>
+                        <input type="email" id="email" placeholder="email@example.com" required>
+                    </div>
+                </div>
 
-<input type="text" id="nama" placeholder="Nama">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>No Telepon <span class="required">*</span></label>
+                        <input type="text" id="telepon" placeholder="0812-3456-7890" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggal Keberangkatan <span class="required">*</span></label>
+                        <input type="date" id="tanggal" required>
+                    </div>
+                </div>
 
-<input type="email" id="email" placeholder="Email">
+                <!-- Destinasi & Tiket -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Destinasi <span class="required">*</span></label>
+                        <select id="destinasi" required>
+                            <option value="">— Pilih Destinasi —</option>
+                            <option value="Bali">Bali</option>
+                            <option value="Raja Ampat">Raja Ampat</option>
+                            <option value="Lombok">Lombok</option>
+                        </select>
+                        <div class="dest-info" id="destInfo">Pilih destinasi untuk melihat harga paket.</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Jumlah Tiket <span class="required">*</span></label>
+                        <input type="number" id="tiket" placeholder="Jumlah" min="1" value="1" required>
+                    </div>
+                </div>
 
-<input type="text" id="telepon" placeholder="No Telepon">
+                <!-- Ringkasan Harga -->
+                <div class="price-summary" id="priceSummary">
+                    <div class="row">
+                        <span class="label">Destinasi</span>
+                        <span class="value" id="destDisplay">—</span>
+                    </div>
+                    <div class="row">
+                        <span class="label">Harga per Tiket</span>
+                        <span class="value" id="pricePerTicket">Rp 0</span>
+                    </div>
+                    <div class="row">
+                        <span class="label">Jumlah Tiket</span>
+                        <span class="value" id="qtyDisplay">1</span>
+                    </div>
+                    <div class="row">
+                        <span class="label">Total Harga</span>
+                        <span class="value" id="totalPrice">Rp 0</span>
+                    </div>
+                </div>
 
-<select id="destinasi">
-<option value="">Pilih Destinasi</option>
-<option>Bali</option>
-<option>Raja Ampat</option>
-<option>Lombok</option>
-</select>
+                <!-- Payment Method -->
+                <div class="payment-methods">
+                    <h3>💳 Pilih Metode Pembayaran <span class="required">*</span></h3>
+                    <div class="payment-options" id="paymentOptions">
+                        <label class="payment-option" data-value="bank">
+                            <input type="radio" name="payment" value="Transfer Bank" checked>
+                            <span class="icon"></span> Transfer Bank
+                        </label>
+                        <label class="payment-option" data-value="qris">
+                            <input type="radio" name="payment" value="QRIS">
+                            <span class="icon"></span> QRIS
+                        </label>
+                        <label class="payment-option" data-value="dana">
+                            <input type="radio" name="payment" value="DANA">
+                            <span class="icon"></span> DANA
+                        </label>
+                        <label class="payment-option" data-value="gopay">
+                            <input type="radio" name="payment" value="GoPay">
+                            <span class="icon"></span> GoPay
+                        </label>
+                    </div>
+                </div>
 
-<input type="number" id="tiket" placeholder="Jumlah Tiket">
+                <!-- Tombol -->
+                <button type="submit" class="btn-submit" id="submitBtn">
+                    🚀 Booking Sekarang
+                </button>
 
-<input type="date" id="tanggal">
+                <div class="footer-actions">
+                    <button type="button" class="btn-back" onclick="window.location.href='index.html'">
+                        ← Back to Home
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-<button type="submit">
-Submit Booking
-</button>
+    <footer>
+    © 2026 TravelGo - Website Created By Asma Nabila Widodo | 251011750034
+    </footer>
 
-<br>
-
-<button type="button" onclick="window.location.href='index.html'" style="margin-top: 20px; background-color: aquamarine; color: blue;">
-    Back to Home
-</button>
-
-</form>
-
-</div>
-
-<script src="assets/booking.js"></script>
-
+    <script src="assets/booking.js"></script>
 </body>
 </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>Booking</title>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Booking Travel</h2>
+
+<form id="bookingForm">
+
+<input type="text" id="nama" placeholder="Nama">
+
+<input type="email" id="email" placeholder="Email">
+
+<input type="text" id="telepon" placeholder="No Telepon">
+
+<select id="destinasi">
+<option value="">Pilih Destinasi</option>
+<option>Bali</option>
+<option>Raja Ampat</option>
+<option>Lombok</option>
+</select>
+
+<input type="number" id="tiket" placeholder="Jumlah Tiket">
+
+<input type="date" id="tanggal">
+
+<button type="submit">
+Submit Booking
+</button>
+
+<br>
+
+<button type="button" onclick="window.location.href='index.html'" style="margin-top: 20px; background-color: aquamarine; color: blue;">
+    Back to Home
+</button>
+
+</form>
+
+</div>
+
+<script src="assets/booking.js"></script>
+
+</body>
+</html>

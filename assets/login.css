@@ -1,0 +1,201 @@
+/* ==========================
+   RESET
+========================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f5f7fb;
+}
+
+/* ==========================
+   LOGIN PAGE
+========================== */
+
+.login-container{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+}
+
+.login-box{
+    width:100%;
+    max-width:400px;
+    background:#fff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.login-box h2{
+    text-align:center;
+    margin-bottom:10px;
+    color:#0f172a;
+    font-size:32px;
+}
+
+.login-box p{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
+}
+
+.input-group{
+    margin-bottom:20px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.input-group input{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    outline:none;
+    font-size:15px;
+    transition:.3s;
+}
+
+.input-group input:focus{
+    border-color:#1e3a8a;
+    box-shadow:0 0 5px rgba(30,58,138,.2);
+}
+
+.login-box button{
+    width:100%;
+    padding:14px;
+    background:#0f172a;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.login-box button:hover{
+    background:#1e3a8a;
+}
+
+.register{
+    margin-top:20px;
+    text-align:center;
+    font-size:14px;
+}
+
+.register a{
+    color:#1e3a8a;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.register a:hover{
+    text-decoration:underline;
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media (max-width:768px){
+
+    .login-box{
+        max-width:450px;
+        padding:35px;
+    }
+
+    .login-box h2{
+        font-size:28px;
+    }
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:480px){
+
+    .login-container{
+        padding:15px;
+    }
+
+    .login-box{
+        width:100%;
+        padding:25px;
+        border-radius:12px;
+    }
+
+    .login-box h2{
+        font-size:26px;
+    }
+
+    .login-box p{
+        font-size:14px;
+    }
+
+    .input-group label{
+        font-size:14px;
+    }
+
+    .input-group input{
+        padding:12px;
+        font-size:14px;
+    }
+
+    .login-box button{
+        padding:12px;
+        font-size:15px;
+    }
+
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 35px;
+    background:#0f172a;
+    color:#fff;
+    text-decoration:none;
+    border-radius:30px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#1e293b;
+}
+
+/* ==========================
+   EXTRA SMALL DEVICE
+========================== */
+
+@media (max-width:320px){
+
+    .login-box{
+        padding:20px;
+    }
+
+    .login-box h2{
+        font-size:22px;
+    }
+
+    .login-box p{
+        font-size:13px;
+    }
+
+    .login-box button{
+        font-size:14px;
+    }
+
+}

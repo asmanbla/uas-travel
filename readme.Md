@@ -29,28 +29,6 @@ Website ini memiliki tampilan yang responsif sehingga dapat diakses dengan baik 
 
 ---
 
-## Struktur Folder
-
-```
-TravelKu/
-│
-├── index.html
-├── login.html
-├── profil.html
-├── destinasi.html
-├── booking.html
-├── style.css
-├── script.js
-├── README.md
-└── images/
-    ├── bali.jpg
-    ├── lombok.jpg
-    ├── rajaampat.jpg
-    └── ...
-```
-
----
-
 ## Cara Menjalankan Program
 
 1. Unduh atau clone repository proyek.

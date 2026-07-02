@@ -179,3 +179,30 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// JS untuk Metode Pembayaran 
+const paymentRadios = document.querySelectorAll('input[name="payment"]');
+
+const bankDetail = document.getElementById("bankDetail");
+const qrisDetail = document.getElementById("qrisDetail");
+
+paymentRadios.forEach(radio => {
+    radio.addEventListener("change", function(){
+
+        if(this.value === "Transfer Bank"){
+            bankDetail.style.display = "block";
+            qrisDetail.style.display = "none";
+        }
+
+        else if(this.value === "QRIS"){
+            bankDetail.style.display = "none";
+            qrisDetail.style.display = "block";
+        }
+
+        else{
+            bankDetail.style.display = "none";
+            qrisDetail.style.display = "none";
+        }
+
+    });
+});

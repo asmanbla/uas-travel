@@ -331,6 +331,33 @@
         padding:20px;
     }
 
+    .payment-detail{
+        margin-top:20px;
+        padding:20px;
+        border:2px dashed #dbeafe;
+        background:#f8fafc;
+        border-radius:15px;
+    }
+
+    .payment-detail h4{
+        margin-bottom:15px;
+        color:#0f172a;
+    }
+
+    .payment-detail p{
+        margin:6px 0;
+        color:#334155;
+    }
+
+    .qris-image{
+        width:220px;
+        max-width:100%;
+        display:block;
+        margin:15px auto;
+        border-radius:10px;
+        border:1px solid #ddd;
+    }
+
     /* =========================
     RESPONSIVE - PERBAIKAN
     ========================= */
